@@ -865,13 +865,34 @@
             // ---------------------------------------------------------
             const uniqueId = 'DIAG-' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5).toUpperCase();
 
-            // formatear respuestas en texto plano para el campo 'diagnostico'
+            // Short labels mapping
+            const shortLabels = {
+                "filter": "Modelo",
+                "q2": "Etapa",
+                "q3": "Bloqueo",
+                "q4": "Facturación",
+                "q5": "Visión"
+            };
+
             const summaryParts = [];
+
             for (const [key, value] of Object.entries(userResponses)) {
-                summaryParts.push(`${key}: ${value}`);
+                let label = shortLabels[key] || key;
+                let answerText = value;
+
+                if (key !== 'filter') {
+                    const questionObj = generalQuestions.find(q => q.id === key);
+                    if (questionObj) {
+                        const selectedOption = questionObj.options.find(opt => opt.val === value);
+                        if (selectedOption) answerText = selectedOption.text;
+                    }
+                }
+                summaryParts.push(`${label}: ${answerText}`);
             }
-            // Agregar el resultado calculado también
-            summaryParts.push(`RESULTADO_FINAL: Etapa ${stageId}`);
+
+            const stageResult = stages[stageId];
+            const cleanDesc = stageResult.desc.replace(/<\/?[^>]+(>|$)/g, "");
+            summaryParts.push(`RESULTADO FINAL: [${stageResult.title}] - ${cleanDesc}`);
 
             const diagnosticSummary = summaryParts.join(' | ');
 
