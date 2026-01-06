@@ -860,6 +860,49 @@
             if (stageId < 1) stageId = 1;
             if (stageId > 4) stageId = 4;
 
+            // ---------------------------------------------------------
+            // 1. GENERAR ID ÚNICO Y RESUMEN DE DATOS
+            // ---------------------------------------------------------
+            const uniqueId = 'DIAG-' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5).toUpperCase();
+
+            // formatear respuestas en texto plano para el campo 'diagnostico'
+            const summaryParts = [];
+            for (const [key, value] of Object.entries(userResponses)) {
+                summaryParts.push(`${key}: ${value}`);
+            }
+            // Agregar el resultado calculado también
+            summaryParts.push(`RESULTADO_FINAL: Etapa ${stageId}`);
+
+            const diagnosticSummary = summaryParts.join(' | ');
+
+            // ---------------------------------------------------------
+            // 2. ENVIAR DATA AL WEBHOOK (n8n)
+            // ---------------------------------------------------------
+            const webhookUrl = 'https://n8n.sotomayorconsulting.com/webhook/diagnostico';
+
+            // Enviamos sin bloquear la UI (fire and forget visualmente, pero logueando error)
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id_diagnostico: uniqueId,
+                    diagnostico: diagnosticSummary,
+                    fecha: new Date().toISOString()
+                })
+            }).then(response => {
+                console.log('Webhook enviado:', response.status);
+            }).catch(error => {
+                console.error('Error enviando webhook:', error);
+            });
+
+            // ---------------------------------------------------------
+            // 3. ACTUALIZAR URL DE ZCAL CON EL ID
+            // ---------------------------------------------------------
+            // Inyectamos el ID como notas o metadata en la URL de Zcal.
+            // Zcal suele aceptar ?notes=... o ?description=...
+            // Asumiremos que el parametro 'notes' puebla el campo de notas.
+            const dynamicZcalLink = `${zcalLink}?notes=ID_DIAGNOSTICO:${uniqueId}`;
+
             const result = stages[stageId];
             const hasCta = result.action === 'zcal';
 
@@ -903,7 +946,7 @@
                     <div id="agenda-container" style="display:none; margin-top: 2rem; border-top: 1px solid var(--bg-light); padding-top: 2rem;">
                         <h4 style="color: var(--text-dark); margin-bottom: 1rem; text-align: center;">Selecciona tu horario</h4>
                         <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}' style="width: 100%; min-height: 480px;">
-                            <a href="${zcalLink}">Agendar Sesión - Sotomayor Consulting</a>
+                            <a href="${dynamicZcalLink}">Agendar Sesión - Sotomayor Consulting</a>
                         </div>
                     </div>
                     ` : `
