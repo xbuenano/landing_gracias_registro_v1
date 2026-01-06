@@ -883,6 +883,11 @@
                         <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.5;">${result.desc}</p>
                     </div>
 
+                    <!-- Contexto de la lista -->
+                    <p style="text-align: left; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
+                        Lo que lograrás con esta estructura:
+                    </p>
+
                     <div class="result-benefits-list" style="margin-bottom: 32px;">
                         ${benefitsHtml}
                     </div>
@@ -890,8 +895,8 @@
                     ${hasCta ? `
                     <div class="diag-next-step" style="text-align: center; margin-top: 32px;">
                         <h4 style="color: var(--gold-dark); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; font-weight: 700;">Siguiente Paso Recomendado</h4>
-                        <button id="btnScrollToAgenda" class="cta-primary" style="width: 100%; justify-content: center; border: 2px solid var(--text-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.8); transform: none;">${result.cta}</button>
-                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 16px;">Agenda tu sesión sin costo para validar este plan.</p>
+                        <button id="btnScrollToAgenda" class="cta-primary" style="width: 100%; justify-content: center; border: 2px solid var(--bg-dark-deep); box-shadow: 0px 6px 0px var(--bg-dark-deep); transform: translateY(-2px); transition: all 0.2s ease;">${result.cta}</button>
+                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 20px;">Agenda tu sesión sin costo para validar este plan.</p>
                     </div>
 
                      <!-- Contenedor Agenda -->
@@ -904,8 +909,8 @@
                     ` : `
                     <div class="diag-next-step" style="text-align: center; margin-top: 32px;">
                         <h4 style="color: var(--gold-dark); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; font-weight: 700;">Siguiente Paso Recomendado</h4>
-                        <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary" style="width: 100%; justify-content: center; border: 2px solid var(--text-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.8); transform: none;">Ver Recursos Gratuitos</a>
-                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 16px;">Recomendamos validar tu idea antes de invertir.</p>
+                        <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary" style="width: 100%; justify-content: center; border: 2px solid var(--bg-dark-deep); box-shadow: 0px 6px 0px var(--bg-dark-deep); transform: translateY(-2px);">Ver Recursos Gratuitos</a>
+                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 20px;">Recomendamos validar tu idea antes de invertir.</p>
                     </div>
                     `}
                 </div>
