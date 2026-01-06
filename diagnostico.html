@@ -839,35 +839,44 @@
             const hasCta = result.action === 'zcal';
 
             document.getElementById('diagnostico-container').innerHTML = `
-                <div class="diag-shell">
+                <div class="diag-shell" style="background: var(--bg-white); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-lg); text-align: center; max-width: 600px; margin: 0 auto; color: var(--text-dark);">
                     <div class="diag-panel">
-                        <h3>Resultado: ${result.title}</h3>
-                        <div class="diag-summary">
-                            <p>${result.desc}</p>
+                        <div style="margin-bottom: var(--space-md);">
+                             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" class="check-icon" style="margin: 0 auto; display: block; color: var(--gold-primary);">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                            </svg>
                         </div>
-                        <p style="margin-top:12px; font-size: 0.9em; color: var(--text-muted);">
-                            Este análisis se basa en tu etapa operativa, bloqueos actuales y visión a futuro.
-                        </p>
+                        <h3 style="color: var(--text-dark); margin-bottom: var(--space-sm); font-size: 1.5rem;">${result.title}</h3>
+                        <div class="diag-summary" style="margin-bottom: var(--space-md);">
+                            <p style="color: var(--text-secondary); line-height: 1.6;">${result.desc}</p>
+                        </div>
+                        <div style="background: var(--bg-light); padding: var(--space-md); border-radius: var(--radius-md); border-left: 4px solid var(--gold-primary); text-align: left; margin-bottom: var(--space-lg);">
+                            <p style="font-size: 0.9em; color: var(--text-dark); margin: 0;">
+                                <strong>Análisis:</strong> Este diagnóstico se basa en tu etapa operativa, bloqueos actuales y visión a futuro.
+                            </p>
+                        </div>
                     </div>
 
                     ${hasCta ? `
                     <div class="diag-next">
-                        <h4>Siguiente Paso Recomendado</h4>
-                        <p>Agenda una sesión estratégica para avanzar al siguiente nivel con seguridad.</p>
-                        <button id="btnScrollToAgenda" class="cta-primary">${result.cta}</button>
+                        <h4 style="color: var(--gold-dark); margin-bottom: var(--space-xs); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Siguiente Paso Recomendado</h4>
+                        <p style="color: var(--text-muted); margin-bottom: var(--space-md);">Agenda una sesión estratégica para avanzar al siguiente nivel con seguridad.</p>
+                        <button id="btnScrollToAgenda" class="cta-primary" style="width: 100%; justify-content: center;">${result.cta}</button>
                     </div>
 
                      <!-- Contenedor Agenda -->
-                    <div id="agenda-container" style="display:none; margin-top: 16px;">
-                        <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}' style="padding: 0; background: transparent; border-radius: 0;">
+                    <div id="agenda-container" style="display:none; margin-top: 2rem; border-top: 1px solid var(--bg-light); padding-top: 2rem;">
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Selecciona tu horario</h4>
+                        <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}' style="width: 100%; min-height: 480px;">
                             <a href="${zcalLink}">Agendar Sesión - Sotomayor Consulting</a>
                         </div>
                     </div>
                     ` : `
                     <div class="diag-next">
-                        <h4>Siguiente Paso Recomendado</h4>
-                        <p>Tu proyecto aún está en fase temprana. Te recomendamos validar tu modelo de negocio antes de invertir en una estructura legal.</p>
-                        <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary">Ver Recursos Gratuitos</a>
+                         <h4 style="color: var(--gold-dark); margin-bottom: var(--space-xs); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Recomendación Actual</h4>
+                        <p style="color: var(--text-muted); margin-bottom: var(--space-md);">Tu proyecto aún está en fase temprana. Te recomendamos validar tu modelo de negocio antes de invertir en una estructura legal.</p>
+                        <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary" style="width: 100%; justify-content: center;">Ver Recursos Gratuitos</a>
                     </div>
                     `}
                 </div>
@@ -879,7 +888,10 @@
                     const agendaBox = document.getElementById('agenda-container');
                     if (agendaBox) {
                         agendaBox.style.display = 'block';
-                        agendaBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Small timeout to ensure display:block has rendered layout before scrolling
+                        setTimeout(() => {
+                            agendaBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 50);
 
                         // Dynamically load Zcal script ensuring it runs AFTER element is visible
                         if (!document.getElementById('zcal-script')) {
@@ -888,12 +900,6 @@
                             script.src = "https://static.zcal.co/embed/v1/embed.js";
                             script.async = true;
                             document.body.appendChild(script);
-                        } else {
-                            // If script already exists but widget is new, we might need to re-init.
-                            // Zcal usually exposes a global. Let's try just reloading script if needed or trust it handles mutations (unlikely for simple embeds).
-                            // Safe bet: remove old script and re-add if re-rendering, but simpler:
-                            // Just reload the frame? No.
-                            // Let's assume lazy load is enough for the first run.
                         }
                     }
                 });
