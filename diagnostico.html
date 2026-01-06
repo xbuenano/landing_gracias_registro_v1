@@ -668,28 +668,53 @@
         ];
 
         // Mapeo de Etapas (Enfoque: LLC como Producto)
+        // Mapeo de Etapas (Enfoque: LLC como Producto)
         const stages = {
             1: {
                 title: "Etapa de Exploración",
-                desc: "Tu proyecto está en fase semilla. <strong>No necesitas una LLC todavía.</strong> Abrirla ahora sería un gasto innecesario de mantenimiento ($300-$800/año + reportes). Céntrate en validar tu modelo primero.",
+                desc: "Tu proyecto está en fase semilla. <strong>No necesitas una LLC todavía.</strong> Abrirla ahora sería un gasto innecesario. Céntrate en validar.",
+                benefits: [
+                    "Validación de mercado sin costos fijos anuales",
+                    "Evitar burocracia y reportes innecesarios",
+                    "Enfoque 100% en producto y ventas iniciales",
+                    "Flexibilidad total para pivotar el modelo"
+                ],
                 cta: "Ver Guía de Validación Pre-LLC",
                 action: "checklist"
             },
             2: {
                 title: "Momento Ideal de Estructuración",
-                desc: "Ya tienes ventas, pero estás asumiendo todo el riesgo personal. <strong>Necesitas una LLC (Limited Liability Company)</strong> para separar legalmente tu patrimonio de tu negocio antes de seguir creciendo.",
+                desc: "Ya tienes ventas y tracción. <strong>Necesitas una LLC (Limited Liability Company)</strong> para separar legalmente tu patrimonio personal del negocio.",
+                benefits: [
+                    "Separación total de patrimonio personal y negocio",
+                    "Acceso a Cuentas Bancarias Business (Mercury/Relay)",
+                    "Pasarelas de Pago Internacionales (Stripe/PayPal)",
+                    "Imagen profesional y credibilidad ante clientes"
+                ],
                 cta: "Agenda para Constituir tu LLC",
                 action: "zcal"
             },
             3: {
                 title: "Urgencia de Formalización",
-                desc: "Operar informalmente te está cerrando puertas. <strong>Necesitas incorporar tu LLC urgentemente</strong> para acceder a Banca Business (Mercury/Relay), Pasarelas (Stripe) y evitar bloqueos de cuentas personales.",
+                desc: "Operar informalmente es un riesgo. <strong>Necesitas incorporar tu LLC urgentemente</strong> para evitar bloqueos y acceder a herramientas globales.",
+                benefits: [
+                    "Legalidad para operar sin riesgos de cierre",
+                    "Prevención de bloqueos en cuentas personales",
+                    "Contratos internacionales ejecutables en EE. UU.",
+                    "Base sólida para escalar facturación"
+                ],
                 cta: "Agenda para Formalizar tu Estructura",
                 action: "zcal"
             },
             4: {
                 title: "Optimización Fiscal Corporativa",
-                desc: "Tu volumen exige eficiencia. Una LLC simple puede quedarse corta. <strong>Necesitas una Estructuración Avanzada</strong> (posiblemente Holding o C-Corp) para optimizar impuestos y proteger activos a gran escala.",
+                desc: "Tu volumen exige eficiencia. <strong>Necesitas una Estructuración Avanzada</strong> para optimizar impuestos y proteger activos a gran escala.",
+                benefits: [
+                    "Eficiencia fiscal avanzada y planificación tributaria",
+                    "Protección de activos a gran escala (Asset Protection)",
+                    "Estructura lista para rondas de inversión o venta",
+                    "Beneficios corporativos para socios y empleados"
+                ],
                 cta: "Sesión de Estrategia Fiscal Corporativa",
                 action: "zcal"
             }
@@ -838,45 +863,47 @@
             const result = stages[stageId];
             const hasCta = result.action === 'zcal';
 
+            // Render Benefits List
+            const benefitsHtml = result.benefits.map(benefit => `
+                <div class="result-benefit-card" style="display: flex; align-items: center; gap: 16px; background: var(--bg-light); padding: 16px; border-radius: var(--radius); margin-bottom: 12px; text-align: left;">
+                    <div class="benefit-icon" style="flex-shrink: 0; width: 40px; height: 40px; background: var(--gold-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span style="font-size: 15px; color: var(--text-secondary); font-weight: 500;">${benefit}</span>
+                </div>
+            `).join('');
+
             document.getElementById('diagnostico-container').innerHTML = `
-                <div class="diag-shell" style="background: var(--bg-white); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-lg); text-align: center; max-width: 600px; margin: 0 auto; color: var(--text-dark);">
-                    <div class="diag-panel">
-                        <div style="margin-bottom: var(--space-md);">
-                             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" class="check-icon" style="margin: 0 auto; display: block; color: var(--gold-primary);">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
-                            </svg>
-                        </div>
-                        <h3 style="color: var(--text-dark); margin-bottom: var(--space-sm); font-size: 1.5rem;">${result.title}</h3>
-                        <div class="diag-summary" style="margin-bottom: var(--space-md);">
-                            <p style="color: var(--text-secondary); line-height: 1.6;">${result.desc}</p>
-                        </div>
-                        <div style="background: var(--bg-light); padding: var(--space-md); border-radius: var(--radius-md); border-left: 4px solid var(--gold-primary); text-align: left; margin-bottom: var(--space-lg);">
-                            <p style="font-size: 0.9em; color: var(--text-dark); margin: 0;">
-                                <strong>Análisis:</strong> Este diagnóstico se basa en tu etapa operativa, bloqueos actuales y visión a futuro.
-                            </p>
-                        </div>
+                <div class="diag-shell-clean" style="max-width: 600px; margin: 0 auto; background: white; padding: 0;">
+                    
+                    <div class="result-header" style="text-align: left; margin-bottom: 24px; border-left: 4px solid var(--gold-primary); padding-left: 16px;">
+                        <h3 style="color: var(--text-dark); font-size: 1.5rem; margin-bottom: 8px; line-height: 1.2;">${result.title}</h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.5;">${result.desc}</p>
+                    </div>
+
+                    <div class="result-benefits-list" style="margin-bottom: 32px;">
+                        ${benefitsHtml}
                     </div>
 
                     ${hasCta ? `
-                    <div class="diag-next">
-                        <h4 style="color: var(--gold-dark); margin-bottom: var(--space-xs); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Siguiente Paso Recomendado</h4>
-                        <p style="color: var(--text-muted); margin-bottom: var(--space-md);">Agenda una sesión estratégica para avanzar al siguiente nivel con seguridad.</p>
+                    <div class="diag-next-step" style="text-align: center;">
                         <button id="btnScrollToAgenda" class="cta-primary" style="width: 100%; justify-content: center;">${result.cta}</button>
+                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 12px;">Agenda tu sesión sin costo para validar este plan.</p>
                     </div>
 
                      <!-- Contenedor Agenda -->
                     <div id="agenda-container" style="display:none; margin-top: 2rem; border-top: 1px solid var(--bg-light); padding-top: 2rem;">
-                        <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Selecciona tu horario</h4>
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; text-align: center;">Selecciona tu horario</h4>
                         <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}' style="width: 100%; min-height: 480px;">
                             <a href="${zcalLink}">Agendar Sesión - Sotomayor Consulting</a>
                         </div>
                     </div>
                     ` : `
-                    <div class="diag-next">
-                         <h4 style="color: var(--gold-dark); margin-bottom: var(--space-xs); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Recomendación Actual</h4>
-                        <p style="color: var(--text-muted); margin-bottom: var(--space-md);">Tu proyecto aún está en fase temprana. Te recomendamos validar tu modelo de negocio antes de invertir en una estructura legal.</p>
+                    <div class="diag-next-step" style="text-align: center;">
                         <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary" style="width: 100%; justify-content: center;">Ver Recursos Gratuitos</a>
+                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 12px;">Recomendamos validar tu idea antes de invertir.</p>
                     </div>
                     `}
                 </div>
