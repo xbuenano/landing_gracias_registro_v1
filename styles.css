@@ -654,7 +654,21 @@ body {
     padding: var(--space-sm);
   }
 
-  .option-card {
+  /* Remove padding from calendar card to allow full-width widget */
+  .option-card.option-calendar {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Add padding back to header and description within calendar card */
+  .option-card.option-calendar .option-header,
+  .option-card.option-calendar .option-description {
+    padding: var(--space-md);
+    padding-bottom: 0;
+  }
+
+  /* Regular option card keeps padding */
+  .option-card:not(.option-calendar) {
     padding: var(--space-md);
   }
 
@@ -668,8 +682,15 @@ body {
   .option-calendar .zcal-container {
     min-height: 380px;
     padding: 0;
+    margin: 0;
     border: none;
     background: transparent;
+  }
+
+  .option-calendar .zcal-inline-widget,
+  .option-calendar .zcal-inline-widget a {
+    border-radius: 0;
+    border: none;
   }
 }
 
