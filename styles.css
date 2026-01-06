@@ -603,6 +603,33 @@ body {
   color: var(--gold-primary);
 }
 
+/* Agenda Aislada (New Block) */
+.agenda-block {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+
+.agenda-header-simple {
+  margin-bottom: var(--space-md);
+  color: var(--text-light);
+  /* Light text for dark background */
+}
+
+.agenda-header-simple h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+  color: var(--gold-primary);
+}
+
+.agenda-header-simple p {
+  color: var(--text-light);
+  /* Ensure visibility */
+  opacity: 0.8;
+}
+
 /* ===========================================
    Animations
    =========================================== */
