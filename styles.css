@@ -736,6 +736,17 @@ body {
     /* Reduced side padding */
   }
 
+  /* Agenda block on mobile: clean and full width */
+  .agenda-block {
+    padding: var(--space-lg) 0;
+    /* No side padding for edge-to-edge agenda */
+  }
+
+  .agenda-header-simple {
+    padding: 0 1.25rem;
+    /* Keep text validly padded */
+  }
+
   /* Header adjustments */
   .brand-header {
     padding: var(--space-md);
