@@ -687,6 +687,8 @@ body {
     /* Side margins to match other blocks, bottom space for widget */
     width: auto;
     /* Allow margins to work */
+    text-align: left;
+    /* Left align text as requested */
   }
 
   /* Regular option card keeps padding */
