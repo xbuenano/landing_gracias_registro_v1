@@ -1,0 +1,175 @@
+Actúa como un diseñador UX/UI senior y estratega de experiencia post-conversión para funnels de servicios consultivos de alto valor (legal, fiscal y corporativo internacional).
+
+Tu tarea es diseñar el CONTENIDO, ESTRUCTURA y NARRATIVA de una página de agradecimiento (Thank You Page) para Sotomayor Consulting International.
+
+Esta página NO es una landing de venta.
+NO debe vender planes, precios ni servicios.
+NO debe generar presión para agendar.
+
+Su función es:
+- Agradecer el registro.
+- Confirmar que la información fue recibida correctamente.
+- Explicar de forma clara y honesta qué sigue en el proceso.
+- Nutrir el interés del usuario con información relevante y educativa.
+- Reforzar la autoridad de la marca.
+- Ofrecer siguientes pasos opcionales, de forma natural.
+
+---
+
+### CONTEXTO DEL USUARIO
+El visitante:
+- Viene de un formulario de Meta Ads.
+- Indicó su objetivo para abrir una LLC en EE. UU.
+- Indicó si le interesa o no una asesoría.
+- Aún NO ha hablado con un asesor.
+- Aún NO se ha realizado ningún análisis de su caso.
+
+Por lo tanto:
+- No se debe afirmar que existe una evaluación en curso.
+- No se deben hacer promesas de análisis previo.
+- El lenguaje debe ser honesto, claro y tranquilo.
+
+---
+
+### OBJETIVO DE LA THANK YOU PAGE
+1. Confirmar el registro de forma clara.
+2. Mantener el interés del usuario (no dejarlo “en espera”).
+3. Explicar que abrir una LLC requiere estructura, no solo un trámite.
+4. Posicionar a Sotomayor Consulting como guía experta.
+5. Dar control al usuario sobre cómo continuar:
+   - Informarse mejor (diagnóstico).
+   - Avanzar cuando esté listo (agenda).
+6. Preparar el terreno para el contacto posterior por WhatsApp.
+
+---
+
+### TONO Y ESTILO
+- Profesional, cercano y humano.
+- Informativo, no comercial.
+- Educativo, no técnico en exceso.
+- Sin urgencia artificial.
+- Sin lenguaje de venta.
+- Estilo consultoría internacional / legal / corporativa.
+
+---
+
+## ESTRUCTURA DE CONTENIDO DE LA THANK YOU PAGE
+
+---
+
+### 1. MENSAJE DE AGRADECIMIENTO (BLOQUE PRINCIPAL)
+
+Título:
+"Gracias por tu registro 👋"
+
+Texto:
+"Hemos recibido correctamente tu información."
+
+Texto de contexto:
+"Ya sea que tengas un proyecto en marcha o estés evaluando iniciarlo, una LLC en Estados Unidos puede ser una herramienta clave si está bien estructurada desde el inicio."
+
+---
+
+### 2. BLOQUE “QUÉ SIGNIFICA ABRIR UNA LLC” (NUTRICIÓN DE INTERÉS)
+
+Objetivo:
+Nutrir el interés sin vender.
+
+Texto introductorio:
+"Abrir una LLC no es solo registrar una empresa. Es definir una estructura que permita operar, cobrar y crecer de forma ordenada."
+
+Contenido educativo (formato bullets o cards):
+- Diseño correcto de la LLC según la actividad.
+- Capacidad para abrir cuentas bancarias empresariales.
+- Compatibilidad con plataformas como Stripe o PayPal.
+- Obtención del EIN para operar legalmente en EE. UU.
+- Evitar errores comunes que luego generan reprocesos.
+
+El enfoque debe ser informativo, no promocional.
+
+---
+
+### 3. BLOQUE DE EXPECTATIVA REALISTA (HONESTIDAD)
+
+Texto:
+"Cada proyecto es distinto. Por eso, antes de avanzar, es importante entender tu situación, tus objetivos y en qué etapa te encuentras."
+
+Este bloque refuerza que:
+- No hay soluciones genéricas.
+- No se fuerza ningún paso.
+- El usuario mantiene el control.
+
+---
+
+### 4. BLOQUE DE SIGUIENTES PASOS (OPCIONALES)
+
+Introducción:
+"Si lo deseas, puedes continuar de alguna de estas formas:"
+
+---
+
+#### Opción A – Diagnóstico rápido (1 minuto)
+
+Objetivo:
+Baja fricción, alto valor percibido.
+
+Texto:
+"Puedes realizar un diagnóstico rápido respondiendo algunas preguntas clave. Esto permite entender mejor tu situación y orientarte de forma más clara."
+
+CTA sugerido:
+"Realizar diagnóstico en 1 minuto"
+
+Este paso es opcional y educativo.
+
+---
+
+#### Opción B – Agenda opcional
+
+Objetivo:
+Facilitar la acción sin presión.
+
+Texto:
+"Si prefieres avanzar directamente o conversar con un asesor, puedes agendar una sesión cuando te quede cómodo."
+
+Aquí debe integrarse la agenda de Zcal de forma embebida e inline, como parte natural del contenido, sin CTA agresivo.
+
+Código de integración requerido:
+
+<script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
+<div class="zcal-inline-widget">
+  <a href="https://zcal.co/i/sTo1ewXN">
+    Sesión Estratégica: Tu Empresa en EE. UU. - Schedule a meeting
+  </a>
+</div>
+
+---
+
+### 5. BLOQUE DE CONTACTO HUMANO (WHATSAPP)
+
+Objetivo:
+Preparar el canal sin generar expectativa falsa.
+
+Texto:
+"En cualquier caso, uno de nuestros asesores también te escribirá por WhatsApp para acompañarte y ayudarte según tu interés y momento actual."
+
+Este mensaje debe transmitir cercanía, no urgencia.
+
+---
+
+### 6. CIERRE DE MARCA (REFUERZO SUAVE)
+
+Texto final:
+"Nuestro enfoque es claro: ayudarte a tomar decisiones informadas, con una estructura adecuada y sin improvisaciones."
+
+---
+
+### RESULTADO ESPERADO
+La página debe:
+- Agradecer y confirmar el registro.
+- Mantener el interés del usuario.
+- Educar sin vender.
+- Reforzar confianza y autoridad.
+- Ofrecer caminos claros sin presión.
+- Preparar coherentemente la conversación por WhatsApp según la intención del usuario.
+
+Diseña el contenido final listo para ser implementado en HTML/CSS o en un constructor visual como Elementor.

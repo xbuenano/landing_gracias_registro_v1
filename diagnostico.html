@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico LLC Inteligente | Sotomayor Consulting</title>
+    <meta name="description"
+        content="Descubre en 5 preguntas si una LLC en Estados Unidos es la mejor estructura para tu negocio.">
+    <link rel="icon" type="image/png"
+        href="https://sotomayorconsulting.com/wp-content/uploads/2024/12/isotipo-redondo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Brand Colors */
+            --gold-primary: #BA8D34;
+            --gold-light: #C9A355;
+            --gold-dark: #9A7428;
+            --gold-muted: rgba(186, 141, 52, 0.15);
+            --gold-glow: rgba(186, 141, 52, 0.3);
+
+            /* Dark Theme - Navy Corporate */
+            --bg-dark-deep: #0E2637;
+            --bg-dark: #132D42;
+            --bg-dark-card: #1A3A52;
+            --bg-dark-elevated: #275379;
+
+            /* Light */
+            --bg-white: #FFFFFF;
+            --bg-cream: #F8F9FA;
+            --bg-light: #F1F3F5;
+
+            /* Text */
+            --text-white: #FFFFFF;
+            --text-light: #E8E8EC;
+            --text-muted: #9CA3AF;
+            --text-dark: #1F2937;
+            --text-secondary: #4B5563;
+
+            /* Status */
+            --success: #34a853;
+            --success-light: rgba(52, 168, 83, 0.15);
+
+            --radius: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark-deep);
+            line-height: 1.6;
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+
+        /* Background Effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -20%;
+            width: 80%;
+            height: 100%;
+            background: radial-gradient(ellipse, var(--gold-glow) 0%, transparent 60%);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* HERO SCREEN */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 60px;
+            z-index: 1;
+        }
+
+        .logo-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            padding: 16px 0;
+            background: rgba(14, 38, 55, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(186, 141, 52, 0.1);
+        }
+
+        .logo-top {
+            height: 48px;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-content {
+            max-width: 640px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            color: var(--text-white);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content h1 .accent {
+            color: var(--gold-primary);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 500px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-badges span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: var(--text-light);
+            background: var(--bg-dark-card);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-badges span::before {
+            content: '✓';
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
+        .hero-highlight {
+            padding: 16px 24px;
+            border: 1px solid rgba(186, 141, 52, 0.4);
+            background: rgba(186, 141, 52, 0.1);
+            color: var(--gold-light);
+            border-radius: var(--radius);
+            font-weight: 600;
+            max-width: 540px;
+        }
+
+        .btn-start {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-light) 100%);
+            color: var(--bg-dark-deep);
+            font-size: 18px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(186, 141, 52, 0.3);
+            transition: all 0.3s ease;
+            min-width: 280px;
+        }
+
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(186, 141, 52, 0.4);
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+
+        /* QUIZ CONTAINER */
+        .quiz-container {
+            max-width: 720px;
+            margin: 40px auto;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), 0 0 60px rgba(186, 141, 52, 0.1);
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quiz-header {
+            background: var(--bg-dark-deep);
+            padding: 20px 28px;
+            text-align: center;
+            border-bottom: 1px solid rgba(186, 141, 52, 0.2);
+        }
+
+        .quiz-logo {
+            height: 40px;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 0 20px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-primary) 0%, var(--gold-light) 100%);
+            transition: width 0.7s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .step {
+            padding: 40px 32px;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .step.active {
+            display: block;
+            opacity: 1;
+            transform: none;
+        }
+
+        .step h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .step .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 24px;
+            background: var(--bg-light);
+            border: 2px solid transparent;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .options label:hover {
+            border-color: var(--gold-primary);
+            background: var(--gold-muted);
+        }
+
+        .options label.selected {
+            border-color: var(--gold-primary);
+            background: var(--gold-muted);
+            box-shadow: 0 0 0 4px rgba(186, 141, 52, 0.15);
+        }
+
+        input[type="radio"] {
+            margin-top: 2px;
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            accent-color: var(--gold-primary);
+        }
+
+        .insight {
+            background: linear-gradient(135deg, var(--gold-muted) 0%, rgba(186, 141, 52, 0.08) 100%);
+            border: 1px solid rgba(186, 141, 52, 0.3);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin: 28px 0;
+            color: var(--text-dark);
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+            display: none;
+        }
+
+        .insight.visible {
+            display: block;
+            opacity: 1;
+            transform: none;
+        }
+
+        .insight strong {
+            color: var(--gold-dark);
+        }
+
+        .navigation {
+            display: flex;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .btn-back {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--bg-dark-card);
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.25s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--bg-light);
+            border-color: var(--text-dark);
+        }
+
+        .btn-next {
+            background: var(--bg-dark-deep);
+            color: var(--text-white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 2;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            transition: all 0.25s ease;
+        }
+
+        .btn-next:hover:not(:disabled) {
+            background: var(--bg-dark-card);
+            transform: translateY(-2px);
+        }
+
+        .btn-next:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* DIAGNOSTIC RESULT */
+        .diag-shell {
+            background: var(--bg-dark-deep);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+        }
+
+        .diag-panel {
+            background: var(--bg-dark-card);
+            color: var(--text-light);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .diag-panel h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--gold-primary);
+        }
+
+        /* En el rediseño usamos .diag-summary para texto destacado, sin tanto borde */
+        .diag-summary {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 8px 0;
+        }
+
+        .diag-summary p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        .diag-next {
+            background: var(--bg-dark-card);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(186, 141, 52, 0.2);
+        }
+
+        .diag-next h4 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            color: var(--gold-primary);
+        }
+
+        .diag-next p {
+            margin: 0 0 16px 0;
+            color: var(--text-muted);
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-light) 100%);
+            color: var(--bg-dark-deep);
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 8px 28px rgba(186, 141, 52, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(186, 141, 52, 0.45);
+        }
+
+        .zcal-inline-widget {
+            background: var(--bg-dark-elevated);
+            border-radius: var(--radius);
+            padding: 0;
+            /* Removed padding for tighter integration */
+            margin-top: 16px;
+            overflow: hidden;
+            /* Ensure rounded corners clip content */
+        }
+
+        .zcal-inline-widget a {
+            color: var(--gold-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 90px 16px 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 26px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .btn-start {
+                width: 100%;
+                padding: 16px 32px;
+            }
+
+            .step {
+                padding: 24px 16px;
+                /* Reduced side padding (was 20px) */
+            }
+
+            .step h2 {
+                font-size: 22px;
+            }
+
+            .options label {
+                padding: 16px 14px;
+                /* Reduced side padding (was 18px) */
+                font-size: 14px;
+                gap: 12px;
+            }
+
+            .navigation {
+                flex-direction: column-reverse;
+                gap: 12px;
+            }
+
+            .btn-back,
+            .btn-next {
+                width: 100%;
+            }
+
+            .quiz-container {
+                margin: 20px 10px;
+                /* Reduced margin (was 16px) -> Wider Card */
+                border-radius: var(--radius);
+            }
+
+            .insight {
+                padding: 16px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO SCREEN -->
+    <section class="hero" id="welcomeScreen">
+        <div class="logo-bar">
+            <img src="https://sotomayorconsulting.com/wp-content/uploads/2023/10/d3-img2-e1715372936694.png"
+                alt="Sotomayor Consulting" class="logo-top">
+        </div>
+
+        <div class="hero-content">
+            <h1>Descubre el <span class="accent">Nivel de Madurez</span> de tu Proyecto en EE. UU.</h1>
+            <p class="hero-subtitle">Una evaluación estratégica para entender tu etapa actual, tus riesgos y el paso
+                exacto que necesitas dar.</p>
+
+            <div class="hero-badges">
+                <span>Análisis de Etapa</span>
+                <span>Sin tecnicismos</span>
+                <span>Enfoque Estratégico</span>
+            </div>
+
+            <div class="hero-highlight">Recibirás una hoja de ruta según tu situación real, no una venta genérica.</div>
+
+            <button class="btn-start" id="btnStart">Iniciar Evaluación</button>
+
+            <p class="disclaimer">Disclaimer: Esta herramienta ofrece orientación consultiva preliminar, no constituye
+                asesoramiento legal vinculante hasta no revisar el caso en detalle.</p>
+        </div>
+    </section>
+
+    <!-- QUIZ -->
+    <div class="quiz-container" id="quizContainer" aria-hidden="true">
+        <div class="quiz-header">
+            <img src="https://sotomayorconsulting.com/wp-content/uploads/2023/10/d3-img2-e1715372936694.png"
+                alt="Sotomayor Consulting" class="quiz-logo">
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress" style="width:0%"></div>
+        </div>
+
+        <!-- Pregunta 1 (Filtro / Tipo de Negocio) -->
+        <div class="step" data-step="1">
+            <h2>Para darte el contexto correcto, ¿cuál es el modelo de tu negocio?</h2>
+            <p class="subtitle">Cada industria tiene reglas de juego distintas en Estados Unidos.</p>
+            <div class="options">
+                <label><input type="radio" name="filter" value="Servicios"> 💻 Servicios Digitales / Consultoría /
+                    Freelance</label>
+                <label><input type="radio" name="filter" value="Inversiones"> 🏠 Real Estate / Trading /
+                    Inversiones</label>
+                <label><input type="radio" name="filter" value="Ecom"> 📦 E-commerce / Dropshipping / Amazon FBA</label>
+                <label><input type="radio" name="filter" value="Otro"> 🤔 No estoy seguro; quiero orientación</label>
+            </div>
+            <div class="insight" id="insight-filtro"></div>
+            <div class="navigation">
+                <button type="button" class="btn-next" disabled>Continuar →</button>
+            </div>
+        </div>
+
+        <!-- Steps dinámicos -->
+        <div class="step" data-step="2"></div>
+        <div class="step" data-step="3"></div>
+        <div class="step" data-step="4"></div>
+        <div class="step" data-step="5"></div>
+
+        <!-- Resultado Final -->
+        <div class="step" data-step="6">
+            <h2>Diagnóstico de Madurez Completado</h2>
+            <p class="subtitle">Hemos analizado el perfil de tu proyecto. Aquí está tu hoja de ruta.</p>
+            <div id="diagnostico-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // Data Structure adaptable a futuras expansiones
+        // Etapas: 1=Exploración, 2=Estructuración, 3=Corrección, 4=Expansión
+
+        const step1Insights = {
+            "Servicios": "Expandirte fuera de tu país exige <strong>una estructura capaz de operar sin límites</strong>. Una LLC te permite abrir presencia en EE. UU., firmar contratos internacionales, trabajar con clientes extranjeros y acceder a plataformas que solo aceptan empresas registradas en Estados Unidos. Es <strong>el primer paso para convertir tu negocio en una marca global</strong>.",
+            "Inversiones": "Para invertir en bienes raíces o mercados financieros de forma segura, necesitas <strong>un vehículo legal que proteja tus activos</strong> y te permita operar con bancos, brokers y custodios estadounidenses. Una LLC te da acceso a estructuras usadas por inversionistas internacionales, <strong>reduce riesgos legales</strong> y ordena el manejo de propiedades e inversiones bajo un solo vehículo empresarial.",
+            "Ecom": "Si necesitas cobrar en USD, plataformas como Stripe, PayPal Business, Wise Business o bancos estadounidenses requieren que tengas <strong>una entidad legal en EE. UU.</strong> Una LLC te abre esas puertas, <strong>elimina fricción al recibir pagos internacionales</strong> y mejora tu credibilidad frente a clientes globales. Es la forma más estable y profesional para operar en dólares.",
+            "Otro": "Es normal no tener claro qué estructura necesitas. Este diagnóstico evaluará <strong>tu nivel de riesgo, tus objetivos y tu necesidad de bancarización</strong> para determinar si una LLC es imprescindible, conveniente o si puedes iniciar con algo más simple. Con base en tus respuestas tendrás <strong>una recomendación precisa</strong>."
+        };
+
+        const generalQuestions = [
+            {
+                id: "q2",
+                text: "¿En qué etapa operativa te encuentras hoy?",
+                subtitle: "Sé honesto, esto define la urgencia de tu estructura.",
+                options: [
+                    { val: "4", text: "Ya tengo una estructura en EE. UU. pero quiero optimizarla", insight: "Optimizar es clave para reducir carga fiscal y mejorar la protección de activos." },
+                    { val: "3", text: "Ya opero formalmente en mi país, quiero expandirme a EE. UU.", insight: "La internacionalización requiere un espejo legal en EE. UU. para operar eficientemente." },
+                    { val: "2", text: "Ya tengo clientes/ventas, pero opero como persona natural", insight: "Es el momento crítico: tienes tracción pero estás asumiendo todo el riesgo personal." },
+                    { val: "1", text: "Solo tengo la idea o estoy validando modelo", insight: "En esta fase, la prioridad es validar el mercado, no gastar en burocracia innecesaria." }
+                ]
+            },
+            {
+                id: "q3",
+                text: "¿Cuál es tu principal bloqueo o temor actual?",
+                subtitle: "Identificar el freno es el primer paso para soltarlo.",
+                options: [
+                    { val: "3", text: "Dificultad para cobrar a clientes internacionales (Pasarelas)", insight: "Sin una LLC, acceder a Stripe o banca USA de calidad es casi imposible." },
+                    { val: "4", text: "Complejidad operativa / No tengo tiempo", insight: "Tu foco debe estar en el negocio, delegar la estructura es la solución." },
+                    { val: "2", text: "Miedo a problemas legales o impuestos en EE. UU.", insight: "El sistema americano es estricto pero transparente. Con la guía correcta, es muy seguro." },
+                    { val: "1", text: "No saber si mi negocio va a funcionar", insight: "Es un temor válido. Por eso recomendamos estructuras ligeras al inicio." }
+                ]
+            },
+            {
+                id: "q4",
+                text: "¿Cuál es tu volumen aproximado de facturación/inversión anual proyectada?",
+                subtitle: "Esto nos indica la sofisticación fiscal que necesitas.",
+                options: [
+                    { val: "3", text: "Más de $250,000 USD (Escalamiento)", insight: "A este nivel, necesitas estrategias avanzadas de planificación tributaria." },
+                    { val: "3", text: "$50,000 - $250,000 USD (Consolidación)", insight: "Aquí la protección de activos y la eficiencia fiscal se vuelven obligatorias." },
+                    { val: "2", text: "$10,000 - $50,000 USD (Crecimiento)", insight: "En este rango, el costo de la estructura ya se paga solo con los beneficios fiscales y operativos." },
+                    { val: "1", text: "Menos de $10,000 USD (Iniciando)", insight: "Para volúmenes iniciales, el costo de mantenimiento debe ser bajo." }
+                ]
+            },
+            {
+                id: "q5",
+                text: "¿Qué visión tienes para este proyecto a 3 años?",
+                subtitle: "La estructura legal de hoy debe soportar el edificio de mañana.",
+                options: [
+                    { val: "4", text: "Crear una empresa escalable / Venderla a futuro", insight: "La estructura debe estar impecable desde el día 1 para superar due diligence futuros." },
+                    { val: "4", text: "Proteger patrimonio y diversificar inversiones", insight: "La LLC aquí funciona como un escudo de activos (Asset Protection)." },
+                    { val: "2", text: "Vivir de esto 100% y ser mi propio jefe", insight: "Necesitas una base sólida que separe tus finanzas personales del negocio." },
+                    { val: "1", text: "Un ingreso extra / Side hustle", insight: "Perfecto. Necesitas algo simple y eficiente que no te quite tiempo." }
+                ]
+            }
+        ];
+
+        // Mapeo de Etapas (Enfoque: LLC como Producto)
+        const stages = {
+            1: {
+                title: "Etapa de Exploración",
+                desc: "Tu proyecto está en fase semilla. <strong>No necesitas una LLC todavía.</strong> Abrirla ahora sería un gasto innecesario de mantenimiento ($300-$800/año + reportes). Céntrate en validar tu modelo primero.",
+                cta: "Ver Guía de Validación Pre-LLC",
+                action: "checklist"
+            },
+            2: {
+                title: "Momento Ideal de Estructuración",
+                desc: "Ya tienes ventas, pero estás asumiendo todo el riesgo personal. <strong>Necesitas una LLC (Limited Liability Company)</strong> para separar legalmente tu patrimonio de tu negocio antes de seguir creciendo.",
+                cta: "Agenda para Constituir tu LLC",
+                action: "zcal"
+            },
+            3: {
+                title: "Urgencia de Formalización",
+                desc: "Operar informalmente te está cerrando puertas. <strong>Necesitas incorporar tu LLC urgentemente</strong> para acceder a Banca Business (Mercury/Relay), Pasarelas (Stripe) y evitar bloqueos de cuentas personales.",
+                cta: "Agenda para Formalizar tu Estructura",
+                action: "zcal"
+            },
+            4: {
+                title: "Optimización Fiscal Corporativa",
+                desc: "Tu volumen exige eficiencia. Una LLC simple puede quedarse corta. <strong>Necesitas una Estructuración Avanzada</strong> (posiblemente Holding o C-Corp) para optimizar impuestos y proteger activos a gran escala.",
+                cta: "Sesión de Estrategia Fiscal Corporativa",
+                action: "zcal"
+            }
+        };
+
+        let currentStep = 1;
+        let userResponses = {};
+
+        // Zcal Embed Link
+        const zcalLink = 'https://zcal.co/i/sTo1ewXN';
+
+        function init() {
+            updateProgress();
+
+            // Start Button
+            document.getElementById('btnStart').addEventListener('click', () => {
+                document.getElementById('welcomeScreen').style.display = 'none';
+                document.getElementById('quizContainer').style.display = 'block';
+                setActiveStep(1);
+            });
+
+            // Navigation Handlers
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('btn-next') && !e.target.disabled) {
+                    goToNextStep();
+                }
+                if (e.target.classList.contains('btn-back')) {
+                    goToPrevStep();
+                }
+            });
+
+            // Input Change Handlers for Step 1
+            const step1Inputs = document.querySelectorAll('.step[data-step="1"] input');
+            step1Inputs.forEach(input => {
+                input.addEventListener('change', (e) => handleSelection(e, 1));
+            });
+        }
+
+        function setActiveStep(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            const el = document.querySelector(`.step[data-step="${step}"]`);
+            if (el) {
+                el.classList.add('active');
+                if (step > 1 && step < 6) renderDynamicQuestion(step);
+            }
+            currentStep = step;
+            updateProgress();
+        }
+
+        function renderDynamicQuestion(step) {
+            const index = step - 2; // q2 is index 0
+            if (index < 0 || index >= generalQuestions.length) return;
+
+            const qData = generalQuestions[index];
+            const stepEl = document.querySelector(`.step[data-step="${step}"]`);
+
+            stepEl.innerHTML = `
+                <h2>${qData.text}</h2>
+                <p class="subtitle">${qData.subtitle}</p>
+                <div class="options">
+                    ${qData.options.map((opt, i) => `
+                        <label>
+                            <input type="radio" name="${qData.id}" value="${opt.val}" data-insight="${opt.insight}"> 
+                            ${opt.text}
+                        </label>
+                    `).join('')}
+                </div>
+                <div class="insight"></div>
+                <div class="navigation">
+                    <button type="button" class="btn-back">← Atrás</button>
+                    <button type="button" class="btn-next" disabled>Continuar →</button>
+                </div>
+            `;
+
+            // Re-attach listeners based on new DOM
+            const inputs = stepEl.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('change', (e) => handleSelection(e, step));
+            });
+        }
+
+        function handleSelection(e, step) {
+            const stepEl = document.querySelector(`.step[data-step="${step}"]`);
+            const insightEl = stepEl.querySelector('.insight');
+            const nextBtn = stepEl.querySelector('.btn-next');
+            const label = e.target.closest('label');
+
+            // Visual State
+            stepEl.querySelectorAll('label').forEach(l => l.classList.remove('selected'));
+            label.classList.add('selected');
+
+            // Insight Display
+            if (step === 1) {
+                insightEl.innerHTML = step1Insights[e.target.value] || "";
+            } else {
+                insightEl.textContent = e.target.getAttribute('data-insight');
+            }
+
+            insightEl.classList.add('visible');
+            nextBtn.disabled = false;
+
+            // Save Response
+            userResponses[e.target.name] = e.target.value;
+
+            // Auto-scroll
+            setTimeout(() => {
+                insightEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        function goToNextStep() {
+            if (currentStep < 5) {
+                setActiveStep(currentStep + 1);
+            } else {
+                calculateAndShowResult();
+                setActiveStep(6);
+            }
+        }
+
+        function goToPrevStep() {
+            if (currentStep > 1) {
+                setActiveStep(currentStep - 1);
+            }
+        }
+
+        function updateProgress() {
+            const pct = ((currentStep - 1) / 5) * 100;
+            const bar = document.getElementById('progress');
+            bar.style.width = Math.max(5, Math.min(100, pct)) + '%';
+        }
+
+        function calculateAndShowResult() {
+            // Logic: Average the values. 
+            // Val 1 = Stage 1, Val 4 = Stage 4.
+            const values = Object.values(userResponses)
+                .filter(v => !isNaN(v)) // Filter out "Servicios", etc.
+                .map(Number);
+
+            const sum = values.reduce((a, b) => a + b, 0);
+            const avg = sum / values.length;
+
+            let stageId = Math.round(avg);
+            if (stageId < 1) stageId = 1;
+            if (stageId > 4) stageId = 4;
+
+            const result = stages[stageId];
+            const hasCta = result.action === 'zcal';
+
+            document.getElementById('diagnostico-container').innerHTML = `
+                <div class="diag-shell">
+                    <div class="diag-panel">
+                        <h3>Resultado: ${result.title}</h3>
+                        <div class="diag-summary">
+                            <p>${result.desc}</p>
+                        </div>
+                        <p style="margin-top:12px; font-size: 0.9em; color: var(--text-muted);">
+                            Este análisis se basa en tu etapa operativa, bloqueos actuales y visión a futuro.
+                        </p>
+                    </div>
+
+                    ${hasCta ? `
+                    <div class="diag-next">
+                        <h4>Siguiente Paso Recomendado</h4>
+                        <p>Agenda una sesión estratégica para avanzar al siguiente nivel con seguridad.</p>
+                        <button id="btnScrollToAgenda" class="cta-primary">${result.cta}</button>
+                    </div>
+
+                     <!-- Contenedor Agenda -->
+                    <div id="agenda-container" style="display:none; margin-top: 16px;">
+                        <div class="zcal-inline-widget" style="padding: 0; background: transparent; border-radius: var(--radius);">
+                            <a href="${zcalLink}">Agendar Sesión - Sotomayor Consulting</a>
+                        </div>
+                    </div>
+                    ` : `
+                    <div class="diag-next">
+                        <h4>Siguiente Paso Recomendado</h4>
+                        <p>Tu proyecto aún está en fase temprana. Te recomendamos validar tu modelo de negocio antes de invertir en una estructura legal.</p>
+                        <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary">Ver Recursos Gratuitos</a>
+                    </div>
+                    `}
+                </div>
+            `;
+
+            // Logic to reveal Zcal
+            if (hasCta) {
+                document.getElementById('btnScrollToAgenda')?.addEventListener('click', function () {
+                    const agendaBox = document.getElementById('agenda-container');
+                    if (agendaBox) {
+                        agendaBox.style.display = 'block';
+                        agendaBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                        if (!document.getElementById('zcal-script')) {
+                            const script = document.createElement('script');
+                            script.id = 'zcal-script';
+                            script.src = "https://static.zcal.co/embed/v1/embed.js";
+                            script.async = true;
+                            document.body.appendChild(script);
+                        }
+                    }
+                });
+            }
+        }
+
+        init();
+    </script>
+
+</body>
+
+</html>
