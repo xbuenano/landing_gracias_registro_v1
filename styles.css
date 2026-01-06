@@ -681,25 +681,15 @@ body {
     padding: var(--space-sm);
   }
 
-  /* Remove padding from calendar card to allow full-width widget */
-  .option-card.option-calendar {
-    padding: 0;
-    overflow: hidden;
-    /* Force full width relative to parent card, ignoring block margins */
-    margin-left: -1.25rem;
-    margin-right: -1.25rem;
-    width: calc(100% + 2.5rem);
-    border-radius: 0;
-    /* Flush look */
-    box-shadow: none;
+  /* Agenda Intro Card: Boxed look with margins */
+  .option-card.option-intro-agenda {
+    margin: 0 1.25rem var(--space-md);
+    /* Side margins to match other blocks, bottom space for widget */
+    width: auto;
+    /* Allow margins to work */
   }
 
-  /* Add padding back to header and description within calendar card */
-  .option-card.option-calendar .option-header,
-  .option-card.option-calendar .option-description {
-    padding: var(--space-md);
-    padding-bottom: 0;
-  }
+  /* Regular option card keeps padding */
 
   /* Regular option card keeps padding */
   .option-card:not(.option-calendar) {
