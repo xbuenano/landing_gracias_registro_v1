@@ -484,10 +484,12 @@ body {
 /* Calendar Option */
 .option-calendar .zcal-container {
   background: var(--bg-cream);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  /* Keeping background but removing border/padding if user wants "no marco" */
+  border: none;
   border-radius: var(--radius-md);
-  padding: var(--space-md);
+  padding: 0;
   min-height: 420px;
+  overflow: hidden;
 }
 
 .zcal-inline-widget {
@@ -665,7 +667,9 @@ body {
 
   .option-calendar .zcal-container {
     min-height: 380px;
-    padding: var(--space-sm);
+    padding: 0;
+    border: none;
+    background: transparent;
   }
 }
 
