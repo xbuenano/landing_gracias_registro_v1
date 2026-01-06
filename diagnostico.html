@@ -888,9 +888,10 @@
                     </div>
 
                     ${hasCta ? `
-                    <div class="diag-next-step" style="text-align: center;">
-                        <button id="btnScrollToAgenda" class="cta-primary" style="width: 100%; justify-content: center;">${result.cta}</button>
-                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 12px;">Agenda tu sesión sin costo para validar este plan.</p>
+                    <div class="diag-next-step" style="text-align: center; margin-top: 32px;">
+                        <h4 style="color: var(--gold-dark); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; font-weight: 700;">Siguiente Paso Recomendado</h4>
+                        <button id="btnScrollToAgenda" class="cta-primary" style="width: 100%; justify-content: center; border: 2px solid var(--text-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.8); transform: none;">${result.cta}</button>
+                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 16px;">Agenda tu sesión sin costo para validar este plan.</p>
                     </div>
 
                      <!-- Contenedor Agenda -->
@@ -901,9 +902,10 @@
                         </div>
                     </div>
                     ` : `
-                    <div class="diag-next-step" style="text-align: center;">
-                        <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary" style="width: 100%; justify-content: center;">Ver Recursos Gratuitos</a>
-                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 12px;">Recomendamos validar tu idea antes de invertir.</p>
+                    <div class="diag-next-step" style="text-align: center; margin-top: 32px;">
+                        <h4 style="color: var(--gold-dark); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; font-weight: 700;">Siguiente Paso Recomendado</h4>
+                        <a href="https://sotomayorconsulting.com/blog" target="_blank" class="cta-primary" style="width: 100%; justify-content: center; border: 2px solid var(--text-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.8); transform: none;">Ver Recursos Gratuitos</a>
+                        <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 16px;">Recomendamos validar tu idea antes de invertir.</p>
                     </div>
                     `}
                 </div>
@@ -913,8 +915,14 @@
             if (hasCta) {
                 document.getElementById('btnScrollToAgenda')?.addEventListener('click', function () {
                     const agendaBox = document.getElementById('agenda-container');
+                    const btn = this;
+
                     if (agendaBox) {
                         agendaBox.style.display = 'block';
+                        btn.style.display = 'none'; // Hide button after clicking to clean up view
+                        document.querySelector('.diag-next-step p').style.display = 'none'; // Hide caption too
+                        document.querySelector('.diag-next-step h4').innerText = "Selecciona tu horario abajo 👇";
+
                         // Small timeout to ensure display:block has rendered layout before scrolling
                         setTimeout(() => {
                             agendaBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
