@@ -859,7 +859,7 @@
 
                      <!-- Contenedor Agenda -->
                     <div id="agenda-container" style="display:none; margin-top: 16px;">
-                        <div class="zcal-inline-widget" style="padding: 0; background: transparent; border-radius: var(--radius);">
+                        <div class="zcal-inline-widget" data-zcal-options='{"showBackground":1}' style="padding: 0; background: transparent; border-radius: 0;">
                             <a href="${zcalLink}">Agendar Sesión - Sotomayor Consulting</a>
                         </div>
                     </div>
@@ -880,14 +880,6 @@
                     if (agendaBox) {
                         agendaBox.style.display = 'block';
                         agendaBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-                        if (!document.getElementById('zcal-script')) {
-                            const script = document.createElement('script');
-                            script.id = 'zcal-script';
-                            script.src = "https://static.zcal.co/embed/v1/embed.js";
-                            script.async = true;
-                            document.body.appendChild(script);
-                        }
                     }
                 });
             }
@@ -895,7 +887,8 @@
 
         init();
     </script>
-
+    <!-- Statically load Zcal script -->
+    <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
 </body>
 
 </html>
