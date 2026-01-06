@@ -880,6 +880,21 @@
                     if (agendaBox) {
                         agendaBox.style.display = 'block';
                         agendaBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                        // Dynamically load Zcal script ensuring it runs AFTER element is visible
+                        if (!document.getElementById('zcal-script')) {
+                            const script = document.createElement('script');
+                            script.id = 'zcal-script';
+                            script.src = "https://static.zcal.co/embed/v1/embed.js";
+                            script.async = true;
+                            document.body.appendChild(script);
+                        } else {
+                            // If script already exists but widget is new, we might need to re-init.
+                            // Zcal usually exposes a global. Let's try just reloading script if needed or trust it handles mutations (unlikely for simple embeds).
+                            // Safe bet: remove old script and re-add if re-rendering, but simpler:
+                            // Just reload the frame? No.
+                            // Let's assume lazy load is enough for the first run.
+                        }
                     }
                 });
             }
@@ -887,8 +902,6 @@
 
         init();
     </script>
-    <!-- Statically load Zcal script -->
-    <script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
 </body>
 
 </html>

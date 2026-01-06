@@ -664,6 +664,7 @@ body {
     width: calc(100% + 2.5rem);
     border-radius: 0;
     /* Flush look */
+    box-shadow: none;
   }
 
   /* Add padding back to header and description within calendar card */
@@ -723,10 +724,12 @@ body {
   }
 
   /* Reduce internal padding of blocks */
+  /* Reduce internal padding of blocks */
   .intro-block,
   .education-block,
   .expectation-block,
-  .options-block,
+  .next-steps-block,
+  /* Updated class name to match HTML */
   .whatsapp-block,
   .brand-closing {
     padding: var(--space-lg) 1.25rem;
