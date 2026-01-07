@@ -922,7 +922,7 @@
             // Inyectamos el ID como notas o metadata en la URL de Zcal.
             // Zcal suele aceptar ?notes=... o ?description=...
             // Asumiremos que el parametro 'notes' puebla el campo de notas.
-            const dynamicZcalLink = `${zcalLink}?notes=ID_DIAGNOSTICO:${uniqueId}`;
+            const dynamicZcalLink = `${zcalLink}?notes=${uniqueId}`;
 
             const result = stages[stageId];
             const hasCta = result.action === 'zcal';
